@@ -1,0 +1,120 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CC6A9541-DD5C-4BCD-8914-016D8D2EAB3B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ojVirtualTreesR.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ojVirtualTreesD.dproj">
+            <Dependencies>ojVirtualTreesR.dproj</Dependencies>
+        </Projects>
+        <Projects Include="..\..\Demos\Minimal\Minimal.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Demos\Advanced\Advanced.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Demos\MinimalOJ\MinimalOJ.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Demos\Objects\MVCDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Demos\Interfaces\charityevents.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Demos\OLE\OLE.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ojVirtualTreesR">
+        <MSBuild Projects="ojVirtualTreesR.dproj"/>
+    </Target>
+    <Target Name="ojVirtualTreesR:Clean">
+        <MSBuild Projects="ojVirtualTreesR.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ojVirtualTreesR:Make">
+        <MSBuild Projects="ojVirtualTreesR.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ojVirtualTreesD" DependsOnTargets="ojVirtualTreesR">
+        <MSBuild Projects="ojVirtualTreesD.dproj"/>
+    </Target>
+    <Target Name="ojVirtualTreesD:Clean" DependsOnTargets="ojVirtualTreesR:Clean">
+        <MSBuild Projects="ojVirtualTreesD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ojVirtualTreesD:Make" DependsOnTargets="ojVirtualTreesR:Make">
+        <MSBuild Projects="ojVirtualTreesD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Minimal">
+        <MSBuild Projects="..\..\Demos\Minimal\Minimal.dproj"/>
+    </Target>
+    <Target Name="Minimal:Clean">
+        <MSBuild Projects="..\..\Demos\Minimal\Minimal.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Minimal:Make">
+        <MSBuild Projects="..\..\Demos\Minimal\Minimal.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Advanced">
+        <MSBuild Projects="..\..\Demos\Advanced\Advanced.dproj"/>
+    </Target>
+    <Target Name="Advanced:Clean">
+        <MSBuild Projects="..\..\Demos\Advanced\Advanced.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Advanced:Make">
+        <MSBuild Projects="..\..\Demos\Advanced\Advanced.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MinimalOJ">
+        <MSBuild Projects="..\..\Demos\MinimalOJ\MinimalOJ.dproj"/>
+    </Target>
+    <Target Name="MinimalOJ:Clean">
+        <MSBuild Projects="..\..\Demos\MinimalOJ\MinimalOJ.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MinimalOJ:Make">
+        <MSBuild Projects="..\..\Demos\MinimalOJ\MinimalOJ.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MVCDemo">
+        <MSBuild Projects="..\..\Demos\Objects\MVCDemo.dproj"/>
+    </Target>
+    <Target Name="MVCDemo:Clean">
+        <MSBuild Projects="..\..\Demos\Objects\MVCDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVCDemo:Make">
+        <MSBuild Projects="..\..\Demos\Objects\MVCDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="charityevents">
+        <MSBuild Projects="..\..\Demos\Interfaces\charityevents.dproj"/>
+    </Target>
+    <Target Name="charityevents:Clean">
+        <MSBuild Projects="..\..\Demos\Interfaces\charityevents.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="charityevents:Make">
+        <MSBuild Projects="..\..\Demos\Interfaces\charityevents.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OLE">
+        <MSBuild Projects="..\..\Demos\OLE\OLE.dproj"/>
+    </Target>
+    <Target Name="OLE:Clean">
+        <MSBuild Projects="..\..\Demos\OLE\OLE.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OLE:Make">
+        <MSBuild Projects="..\..\Demos\OLE\OLE.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ojVirtualTreesR;ojVirtualTreesD;Minimal;Advanced;MinimalOJ;MVCDemo;charityevents;OLE"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ojVirtualTreesR:Clean;ojVirtualTreesD:Clean;Minimal:Clean;Advanced:Clean;MinimalOJ:Clean;MVCDemo:Clean;charityevents:Clean;OLE:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ojVirtualTreesR:Make;ojVirtualTreesD:Make;Minimal:Make;Advanced:Make;MinimalOJ:Make;MVCDemo:Make;charityevents:Make;OLE:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
